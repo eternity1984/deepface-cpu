@@ -27,7 +27,7 @@ You may still be able to access the file from the browser:
 You can specify that the model should be loaded from an external volume (e.g. `$PWD/weights`) by appending:
 
 ```
-$ docker run -itp 5000:5000 -v $PWD/weights:/home/deepface/.deepface/weights eternity1984/deepface-cpu
+$ docker run -itp 5000:5000 -v $PWD/weights:/mnt/weights eternity1984/deepface-cpu
 ```
 
 Next, Download the model file and save it directly to a mounted volume.

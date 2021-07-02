@@ -11,6 +11,7 @@ RUN groupadd -g ${GID} ${GROUPNAME} \
     && useradd -m -s /bin/bash -u ${UID} -g ${GID} ${USERNAME}
 
 ENV HOME /home/${USERNAME}
+ENV FETCH_WEIGHTS /mnt/weights
 WORKDIR ${HOME}
 
 RUN apt-get update \
@@ -36,4 +37,5 @@ RUN pip install -q \
 USER ${USERNAME}
 
 COPY deepface/api/api.py ${HOME}/api.py
-CMD ["python", "api.py"]
+COPY startup.sh ${HOME}/startup.sh
+CMD ["/bin/bash", "startup.sh"]
